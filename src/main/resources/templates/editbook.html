@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:book="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>书籍修改</title>
+   <style>
+       .book{
+           color: rgba(0,0,0,.5);
+           position: relative;
+           margin: 0 auto;
+           top: 100px;
+           height: 360px;
+           width:600px;
+           background-color: rgba(255, 255, 255, 0);
+           box-shadow: 0 1px 20px -8px rgba(0, 0, 0, .5);
+       }
+       .bookinfo{
+           position: absolute;
+           left: 220px;
+           height: 350px;
+           width:350px;
+       }
+       .bookoption img{
+           float: left;
+           margin: 10px;
+           width: 200px;
+           height: 300px;
+       }
+       input{
+           margin-top: 20px;
+           border-radius: 5px;
+       }
+       .text{
+           border-radius: 5px;
+           position: absolute;
+           display: block;
+           width: 350px;
+           height: 120px;
+           bottom: 50px;
+       }
+       .btnok{
+           position: absolute;
+           bottom: 0px;
+           right: 0px;
+           padding: 0.75em 1.25em;
+           display: inline-block;
+           line-height: 1;
+           text-decoration: none;
+           white-space: nowrap;
+           cursor: pointer;
+           border: 1px solid #6190e8;
+           border-radius: 5px;
+           background-color: #6190e8;
+           color: #fff;
+           outline: none;
+           font-size: 0.75em;
+       }
+       .btn2{
+           position: absolute;
+           bottom: 0px;
+           right: 80px;
+           padding: 0.75em 1.25em;
+           display: inline-block;
+           line-height: 1;
+           text-decoration: none;
+           white-space: nowrap;
+           cursor: pointer;
+           border: 1px solid #6190e8;
+           border-radius: 5px;
+           background-color: #6190e8;
+           color: #fff;
+           outline: none;
+           font-size: 0.75em;
+       }
+   </style>
+</head>
+<body>
+<center><h2>书籍信息查看</h2></center>
+<div class="book">
+    <div class="bookoption">
+        <img th:src="${book.image}" >
+    </div>
+        <div class="bookinfo">
+            <form th:action="@{'/book/editok/'+${book.id}}" method="post">
+                <label for="name" >名称：</label>
+                <input type="text" name="name" th:placeholder="${book.name}" required><br>
+                <label for="author" >作者：</label>
+                <input type="text" name="author" th:placeholder="${book.author}" required><br>
+                <label for="price" >价格：</label>
+                <input type="text" name="price" th:placeholder="${book.price}"required><br>
+                <label for="image" >图片：</label>
+                <input type="text" name="image" th:placeholder="${book.image}"required><br>
+                <textarea  class="text" name="description" placeholder="请输入新的作品简介"required></textarea>
+                <input type="submit" class="btnok">
+                <a class="btn2" th:href="@{'/book/look/return'}">返回</a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

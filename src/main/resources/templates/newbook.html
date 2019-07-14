@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+    .book{
+        color: rgba(0,0,0,.5);
+        position: relative;
+        margin: 0 auto;
+        top: 150px;
+        height: 300px;
+        width: 600px;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0);
+        box-shadow: 0 1px 20px -8px rgba(0, 0, 0, .5);
+    }
+    .myimg img{
+        float: left;
+        height: 300px;
+        width: 200px;
+    }
+    input{
+        margin-top: 25px;
+        border-radius: 5px;
+
+    }
+    .okbtn{
+        position: absolute;
+        bottom: 20px !important;
+        right: 20px!important;
+        display: inline-block;
+        line-height: 1;
+        padding: 0.75em 1.25em;
+        text-decoration: none;
+        white-space: nowrap;
+        cursor: pointer;
+        border: 1px solid#6190e8;
+        border-radius: 5px;
+        background-color:#6190e8;
+        color: #fff;
+        outline: none;
+        font-size: 0.75em;
+    }
+    .text{
+        bottom: 10px;
+        height: 80px;
+        width: 300px;
+        border: #005cbf solid 1px;
+        position:absolute;
+        border-radius: 5px;
+    }
+    </style>
+</head>
+<body>
+<center><h2>添加新的书籍</h2></center>
+<div class="book">
+
+    <div class="myimg">
+        <img src="https://yremp.live/wp-content/uploads/2019/07/72734057_p0.jpg">
+    </div>
+    <div class="bookinfo">
+        <form th:action="@{/book/newbook}" method="post">
+            <label th:for="name" >书名：</label>
+            <input type="text" name="name" th:placeholder="请输入书名"><br>
+            <label th:for="author" >作者：</label>
+            <input type="text" name="author" th:placeholder="请输入作者"><br>
+            <label th:for="price" >价格：</label>
+            <input type="text" name="price" th:placeholder="请输入价格"><br>
+            <label th:for="image" >图片：</label>
+            <input type="text" name="image" th:placeholder="请输入图片"><br>
+            <textarea class="text" th:placeholder="介绍一下这本书..." name="description"></textarea>
+            <input class="okbtn" type="submit">
+        </form>
+    </div>
+</div>
+</body>
+</html>

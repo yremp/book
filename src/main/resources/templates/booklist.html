@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:book="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="../public/css/booklist.css" th:href="@{/css/booklist.css}" rel="stylesheet">
+    <title>清单</title>
+    <style>
+        .addbook{
+            position: fixed;
+            right:40px;
+            width: 40px;
+            bottom: 20px;
+            margin-top: 0px;
+            margin-left: 30px;
+            margin-right: 20px;
+            padding: 1em 1.5em 1em 1.5em;
+            display: inline-block;
+            line-height: 1;
+            text-decoration: none;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 1px solid#6190e8;
+            border-radius: 5px;
+            background-color:#6190e8;
+            color: #fff;
+            outline: none;
+            font-size: 0.75em;
+        }
+    </style>
+</head>
+<body>
+<h2 style="text-align: center">书库</h2>
+<div th:unless="${#lists.isEmpty(books)}" class="allbook" >
+    <div th:each="book:${books}" class="book" id="book">
+     <div class="bookoption">
+         <img th:src="${book.image}" >
+         <div class="optionbtn">
+            <a class="btn1" th:href="@{'/book/predit/'+${book.id}}" >编辑</a>
+            <a class="btn2" th:href="@{'/book/del/'+${book.id}}" >删除</a>
+         </div>
+     </div>
+
+        <div class="bookinfo">
+                        书名：<span th:text="${book.name}"></span><br>
+                        作者：<span th:text="${book.author}"></span><br>
+                        价格：<span th:text="${book.price}">元</span><br>
+                        简介：<span th:text="${book.description}"></span><br>
+        </div>
+    </div>
+</div>
+<a class="addbook" th:href="@{'/book/addbook'}">添加书籍</a>
+</body>
+
+</html>

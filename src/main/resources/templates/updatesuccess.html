@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main{
+
+            color: rgba(0,0,0,.5);
+            position: relative;
+            margin: 0 auto;
+            top: 150px;
+            height: 300px;
+            width: 600px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0);
+            box-shadow: 0 1px 20px -8px rgba(0, 0, 0, .5);
+        }
+        h3{
+            position: absolute;
+            top: 20px;
+            left: 230px;
+        }
+        .btn2{
+            position: absolute;
+            bottom: 100px;
+            left: 250px;
+            margin-top: 0px;
+            margin-left: 30px;
+            margin-right: 20px;
+            padding: 1em 1.5em 1em 1.5em;
+            display: inline-block;
+            line-height: 1;
+            text-decoration: none;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 1px solid#6190e8;
+            border-radius: 5px;
+            background-color:#6190e8;
+            color: #fff;
+            outline: none;
+            font-size: 0.75em;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+  <h3>编辑成功点击返回</h3>
+
+    <a class="btn2" th:href="@{'/book/look/return'}">返回</a>
+</div>
+
+</body>
+</html>
