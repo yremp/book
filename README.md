@@ -5,7 +5,7 @@
 ### 数据库
 #### 数据库名称：spring 
 #### 表以及对应的字段：
-book：int id，varchar name，varcahr author，double price，varcahr image，varcahr description
+book：int id，varchar name，varcahr author，double price，varcahr image，varcahr description<br>
 user：int id，varchar name，varchar email
 
       
