@@ -9,6 +9,7 @@ body::-webkit-scrollbar-thumb
 }
 .book{
     margin-left: 100px;
+    margin-top: 50px;
     float: left;
     height: 300px;
     width: 600px;
