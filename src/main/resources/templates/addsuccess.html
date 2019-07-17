@@ -1,54 +1,77 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        .main{
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>添加成功</title>
 
-            color: rgba(0,0,0,.5);
-            position: relative;
-            margin: 0 auto;
-            top: 150px;
-            height: 300px;
-            width: 600px;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0);
-            box-shadow: 0 1px 20px -8px rgba(0, 0, 0, .5);
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/dashboard/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../public/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet"   >
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
-        h3{
-            position: absolute;
-            top: 20px;
-            left: 230px;
+
+        .table thead th {
+            width: 20%;
+            height: 40px;
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
         }
-        .btn2{
-            position: absolute;
-            bottom: 100px;
-            left: 250px;
-            margin-top: 0px;
-            margin-left: 30px;
-            margin-right: 20px;
-            padding: 1em 1.5em 1em 1.5em;
-            display: inline-block;
-            line-height: 1;
-            text-decoration: none;
-            white-space: nowrap;
-            cursor: pointer;
-            border: 1px solid#6190e8;
-            border-radius: 5px;
-            background-color:#6190e8;
-            color: #fff;
-            outline: none;
-            font-size: 0.75em;
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
         }
     </style>
+    <!-- Custom styles for this template -->
+    <link href="../public/css/mainui.css" th:href="@{/css/mainui.css}" rel="stylesheet">
 </head>
 <body>
-<div class="main">
-  <h3>添加成功点击返回</h3>
-
-    <a class="btn2" th:href="@{'/book/look/return'}">返回</a>
+<div th:replace="/comment/bar::topbar"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="/comment/bar::sidebar"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <span data-feather="calendar"></span>
+                        This week
+                    </button>
+                </div>
+            </div>
+            <div class="card text-center">
+                <div class="card-header">
+                    提示
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" >添加成功</h5>
+                    <a href="#"  th:href="@{/book}" class="btn btn-primary btn-lg btn-block" >返回书籍列表</a>
+                </div>
+            </div>
+        </main>
+    </div>
 </div>
-
-</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0/js/dashboard.js}"></script></body>
 </html>

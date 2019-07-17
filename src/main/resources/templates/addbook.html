@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>书籍管理</title>
+    <title>书籍添加</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/dashboard/">
 
@@ -47,38 +47,42 @@
         <div th:replace="/comment/bar::sidebar"></div>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2" >书籍管理</h1>
+                <h1 class="h2"th:text="${book==null}?'添加书籍':'修改书籍'">添加书籍</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
                     </div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <span data-feather="calendar"></span>
+                        This week
+                    </button>
                 </div>
-            </div>
-            <a th:href="@{/book/newbook}" style="color: white;text-decoration: none" class="btn btn-success" role="button">添加书籍</a>
-            <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>书名</th>
-                        <th>作者</th>
-                        <th>价格</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="book : ${books}">
-                        <td th:text="${book.id}"></td>
-                        <td th:text="${book.name}"></td>
-                        <td th:text="${book.author}"></td>
-                        <td th:text="${book.price}"></td>
-                        <td>
-                            <a th:href="@{'/book/predit/'+${book.id}}" ><button class="btn btn-sm btn-primary">编辑</button></a>
-                          <a th:href="@{'/book/del/'+${book.id}}" ><button class="btn btn-sm btn-danger" >删除</button></a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+            </div >
+            <form  th:action="${book==null}?'/book/addbook':'/book/editok/'+${book.id}" method="post">
+                <div class="form-group">
+                    <label for="name">名称</label>
+                    <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp" th:value="${book!=null}?${book.name}" placeholder="请输入书本名称" required>
+                    <small id="emailHelp" class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                    <label for="author">作者</label>
+                    <input type="text" name="author" class="form-control" id="author" th:value="${book!=null}?${book.author}" placeholder="请输入书本作者" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">价格</label>
+                    <input type="number" name="price" class="form-control" id="price" th:value="${book!=null}?${book.price}" placeholder="请输入书本价格"required>
+                </div>
+                <div class="form-group">
+                    <label for="image">图片URL</label>
+                    <input type="text"  name="image" class="form-control" id="image" th:value="${book!=null}?${book.image}" placeholder="请输入书本图片URL，例如 https://xxxx/01.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="description">书本简介</label>
+                    <textarea  name="description" class="form-control" th:text="${book!=null}?${book.description}" id="description" rows="3"required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="${book==null}?'添加':'修改'">添加</button>
+            </form>
         </main>
     </div>
 </div>

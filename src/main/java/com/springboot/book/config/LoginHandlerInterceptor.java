@@ -11,11 +11,11 @@
 //    @Override
 //    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 //
-//        Object user =request.getSession().getAttribute("user");
+//        Object user=request.getSession().getAttribute("user");
 //        if(user==null)
 //        {
 //            request.setAttribute("mes","无权限，请先登录");
-//            request.getRequestDispatcher("login.html").forward(request,response);
+//            request.getRequestDispatcher("/login").forward(request,response);
 //            return false;
 //
 //        }

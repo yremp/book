@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>书籍管理</title>
+    <title>书籍查看</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/dashboard/">
 
@@ -39,6 +39,8 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="../public/css/mainui.css" th:href="@{/css/mainui.css}" rel="stylesheet">
+
+    <link href="../public/css/booklist.css" th:href="@{/css/booklist.css}" rel="stylesheet">
 </head>
 <body>
 <div th:replace="/comment/bar::topbar"></div>
@@ -47,38 +49,33 @@
         <div th:replace="/comment/bar::sidebar"></div>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2" >书籍管理</h1>
+                <h1 class="h2">书籍查看</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <span data-feather="calendar"></span>
+                        This week
+                    </button>
+                </div>
+            </div>
+            <div th:unless="${#lists.isEmpty(books)}" class="allbook" >
+                <div th:each="book:${books}" class="book" id="book">
+                    <div class="bookoption">
+                        <img th:src="${book.image}" >
+                    </div>
+
+                    <div class="bookinfo">
+                        书名：<span th:text="${book.name}"></span><br>
+                        作者：<span th:text="${book.author}"></span><br>
+                        价格：<span th:text="${book.price}">元</span><br>
+                        简介：<span th:text="${book.description}"></span><br>
                     </div>
                 </div>
             </div>
-            <a th:href="@{/book/newbook}" style="color: white;text-decoration: none" class="btn btn-success" role="button">添加书籍</a>
-            <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>书名</th>
-                        <th>作者</th>
-                        <th>价格</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="book : ${books}">
-                        <td th:text="${book.id}"></td>
-                        <td th:text="${book.name}"></td>
-                        <td th:text="${book.author}"></td>
-                        <td th:text="${book.price}"></td>
-                        <td>
-                            <a th:href="@{'/book/predit/'+${book.id}}" ><button class="btn btn-sm btn-primary">编辑</button></a>
-                          <a th:href="@{'/book/del/'+${book.id}}" ><button class="btn btn-sm btn-danger" >删除</button></a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+
         </main>
     </div>
 </div>

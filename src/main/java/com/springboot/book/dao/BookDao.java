@@ -20,7 +20,7 @@ public interface BookDao {
     Book selectBookByName(String Name);
 //根据id查找全部信息
     @Select({"select * from",table_name,"where id=#{id}"})
-    Book selectBookById(Integer id);
+    Book selectBookById(@Param("id") int id);
 //根据id删除指定书籍
     @Delete({"delete ","from",table_name,"where id=#{id}"})
     void deleteBookById(int id);
